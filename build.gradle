@@ -1,0 +1,78 @@
+apply plugin: 'java'
+apply plugin: 'war'
+
+dependencies {
+	// struts library
+	compile group: 'org.apache.struts', name: 'struts2-core', version: '2.3.24.1'
+	compile 'org.apache.struts:struts2-spring-plugin:2.3.24.1'
+	compile 'org.apache.struts:struts2-json-plugin:2.3.24.1'
+
+	// spring library
+	compile group: 'org.springframework', name: 'spring-core', version: '4.2.3.RELEASE'
+	compile group: 'org.springframework', name: 'spring-web', version: '4.2.3.RELEASE'
+	compile group: 'org.springframework', name: 'spring-orm', version: '4.2.3.RELEASE'
+	compile group: 'org.springframework', name: 'spring-aop', version: '4.2.3.RELEASE'
+	compile group: 'org.springframework', name: 'spring-aspects', version: '4.2.3.RELEASE'
+	compile group: 'org.springframework', name: 'spring-jdbc', version: '4.2.3.RELEASE'
+
+	// hibernate library
+	compile group: 'org.hibernate', name: 'hibernate-core', version: '5.0.1.Final'
+
+	// common library
+	compile 'org.slf4j:slf4j-api:1.7.25'
+	testCompile 'junit:junit:4.12'
+	compile group: 'javax.servlet', name: 'javax.servlet-api', version: '4.0.1'
+	compile group: 'net.minidev', name: 'json-smart', version: '2.3'
+	compile group: 'org.apache.httpcomponents', name: 'httpclient', version: '4.5.6'
+	compile group: 'org.apache.commons', name: 'commons-collections4', version: '4.2'
+	compile group: 'org.jsoup', name: 'jsoup', version: '1.11.3'
+	compile files('WebContent/WEB-INF/lib/ojdbc6.jar')
+}
+
+repositories { 
+	maven { url "https://repo.jenkins-ci.org/public/" }
+	mavenCentral()
+	maven {	url "http://maven.oschina.net/content/groups/public" } 
+}
+
+
+//////////////////////////////////////////////////////////////////////////////
+
+
+project.task('printPerson') {
+            group 'atom'
+            //定义时
+            doLast {
+                println "this is doLast1"
+            }
+        }
+Task printPerson= project.tasks["printPerson"]
+//后来加
+printPerson.doFirst {
+        println "this is doFirst1"
+   }
+printPerson.doFirst {
+        println "this is doFirst2"
+   }
+printPerson.doLast {
+        println "this is doLast2"
+   }
+
+   
+////////////////////////
+   
+task task1 << {
+    println "this is task1"
+}
+task task2 << {
+    println "this is task2"
+}
+task task3 << {
+    println "this is task3"
+}
+task task4 << {
+    println "this is task4"
+}
+task1.dependsOn('task2')
+task2.dependsOn('task3')
+task1.dependsOn('task4')
