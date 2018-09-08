@@ -4,7 +4,7 @@ pipeline {
 	}
 	
     agent {
-        label "{params.agent}"
+        label "${params.agent}"
     }
 	
 	environment {
