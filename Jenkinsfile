@@ -6,6 +6,12 @@ pipeline {
     agent {
         label 'master'
     }
+	
+	environment {
+		DISABLE_AUTH = 'true'
+		DB_ENGINE    = 'sqlite'
+	}
+	
     stages {
         stage('Build') {            
             steps {                
@@ -13,14 +19,20 @@ pipeline {
             }        
         }        
         stage('Test') {            
-            steps {                
-                echo 'Testing................'            
+            steps {  
+				retry(3) {
+					echo 'Testing................'
+				}
+                          
             }        
         }
         stage('Deploy - Staging') {            
             steps {                
-                echo './deploy staging'                
-                echo './run-smoke-tests'            
+				timeout(time: 3, unit: 'MINUTES') {
+					echo './deploy staging'
+					echo './run-smoke-tests'
+				}
+                           
             }        
         }        
         stage('Sanity check') {            
