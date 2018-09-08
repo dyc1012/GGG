@@ -4,7 +4,7 @@ pipeline {
 	}
 	
     agent {
-        label '${agent}'
+        label '${params.agent}'
     }
     stages {
         stage('Build') {            
