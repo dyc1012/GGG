@@ -1,6 +1,10 @@
 pipeline {
+	parameters {
+		string(name: 'agent', defaultValue: 'slave001', description: 'which agent/node do you want to run?')
+	}
+	
     agent {
-        label 'slave001'
+        label '${agent}'
     }
     stages {
         stage('Build') {            
