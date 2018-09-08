@@ -1,10 +1,10 @@
 pipeline {
 	parameters {
-		string(name: 'p1', defaultValue: '1111', description: 'which agent/node do you want to run?')
+		string(name: 'agent', defaultValue: 'slave001', description: 'which agent/node do you want to run?')
 	}
 	
     agent {
-        label 'master'
+        label "{params.agent}"
     }
 	
 	environment {
@@ -15,8 +15,7 @@ pipeline {
     stages {
         stage('Build') {            
             steps {                
-                echo 'Building.............dd'    
-				echo "${params.p1}"        
+                echo 'Building.............dd'            
             }        
         }        
         stage('Test') {            
