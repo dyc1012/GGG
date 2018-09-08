@@ -1,7 +1,7 @@
 pipeline {
-	//parameters {
-	//	string(name: 'agent', defaultValue: 'slave001', description: 'which agent/node do you want to run?')
-	//}
+	parameters {
+		string(name: 'p1', defaultValue: '1111', description: 'which agent/node do you want to run?')
+	}
 	
     agent {
         label 'master'
@@ -15,7 +15,8 @@ pipeline {
     stages {
         stage('Build') {            
             steps {                
-                echo 'Building.............dd'            
+                echo 'Building.............dd'    
+				echo "${params.p1}"        
             }        
         }        
         stage('Test') {            
