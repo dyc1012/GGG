@@ -9,7 +9,14 @@ pipeline {
         stage('Build') { 
             steps {
                 sh 'mvn -v' 
-				println System.currentTimeMillis()
+				script {
+					println System.currentTimeMillis()
+					String str = "";
+					SimpleDateFormat sdf = new SimpleDateFormat("YYYYMMDDHHmmss");
+					Calendar lastDate = Calendar.getInstance();
+					str = sdf.format(lastDate.getTime());
+					println str
+				}
             }
         }
     }
