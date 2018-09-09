@@ -10,6 +10,9 @@ pipeline {
             steps {
                 sh 'mvn -v' 
 				script {
+					import java.util.*;
+					import java.text.SimpleDateFormat;
+					
 					println System.currentTimeMillis()
 					String str = "";
 					SimpleDateFormat sdf = new SimpleDateFormat("YYYYMMDDHHmmss");
