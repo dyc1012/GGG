@@ -9,6 +9,7 @@ pipeline {
         stage('Build') { 
             steps {
                 sh 'mvn -v' 
+				println System.currentTimeMillis()
             }
         }
     }
