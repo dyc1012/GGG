@@ -10,13 +10,13 @@ pipeline {
             steps {
                 sh 'mvn -v' 
 				script {
-					import java.util.*;
-					import java.text.SimpleDateFormat;
+					//import java.util.*;
+					//import java.text.SimpleDateFormat;
 					
 					println System.currentTimeMillis()
 					String str = "";
-					SimpleDateFormat sdf = new SimpleDateFormat("YYYYMMDDHHmmss");
-					Calendar lastDate = Calendar.getInstance();
+					java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("YYYYMMDDHHmmss");
+					java.util.Calendar lastDate = java.util.Calendar.getInstance();
 					str = sdf.format(lastDate.getTime());
 					println str
 				}
