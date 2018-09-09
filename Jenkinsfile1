@@ -15,7 +15,7 @@ pipeline {
 					
 					println System.currentTimeMillis()
 					String str = "";
-					java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("YYYYMMDDHHmmss");
+					java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("YYYYMMddHHmmss");
 					java.util.Calendar lastDate = java.util.Calendar.getInstance();
 					str = sdf.format(lastDate.getTime());
 					println str
