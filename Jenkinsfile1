@@ -2,7 +2,7 @@ pipeline {
     agent {
         docker {
             image 'maven:3-alpine' 
-            args '-v /root/.m2:/root/.m2' 
+            args '-v /root/.m2:/root/.m2'  
         }
     }
     stages {
@@ -17,7 +17,7 @@ pipeline {
 					String str = "";
 					java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("YYYYMMddHHmmss");
 					java.util.Calendar lastDate = java.util.Calendar.getInstance();
-					str = sdf.format(lastDate.getTime());
+					str = sdf.format(lastDate.getTime());                                       
 					println str
 				}
             }
